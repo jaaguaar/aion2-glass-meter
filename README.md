@@ -1,39 +1,39 @@
 # aion2-glass-meter
 
-Відкритий локальний DPS-метр для **Aion 2**. Без Npcap, без інсталятора, без відправки ваших даних кудись.
+A transparent, local DPS meter for **Aion 2**. No Npcap, no installer, and your data never leaves your PC.
 
-> ⚠️ Ранній етап розробки. Робочої версії ще немає. План — у [docs/plan.md](docs/plan.md), дослідження протоколу — у [docs/research.md](docs/research.md).
+> ⚠️ Early development. There is no working build yet. See the plan in [docs/plan.md](docs/plan.md) and the protocol research in [docs/research.md](docs/research.md) (both in Ukrainian for now).
 
-## Що програма робить
+## What it does
 
-- Пасивно читає копію мережевого трафіку гри вбудованими засобами Windows (raw socket / Pktmon).
-- Рахує урон, DPS, розбивку по скілах для вас і групи.
-- Зберігає результати боїв у файли на вашому ПК.
+- Passively reads a copy of the game's network traffic using built-in Windows APIs (raw socket / Pktmon).
+- Calculates damage, DPS and per-skill breakdowns for you and your party.
+- Saves fight results to files on your PC.
 
-## Чого програма НЕ робить
+## What it does NOT do
 
-- Не встановлює драйверів і сторонніх програм (Npcap, WinPcap тощо).
-- Не втручається в процес гри: жодного читання пам'яті, ін'єкцій чи зміни пакетів.
-- Не відправляє дані боїв в інтернет. Єдиний можливий мережевий запит — опційний пошук профілю персонажа на офіційному сайті `aion2.plaync.com`. За замовчуванням він вимкнений.
+- Install drivers or third-party software (Npcap, WinPcap, etc.).
+- Touch the game process: no memory reading, no injection, no packet modification.
+- Send fight data anywhere. The only possible network request is an optional character profile lookup on the official `aion2.plaync.com` site. It is off by default.
 
-## Чому потрібні права адміністратора
+## Why it needs administrator rights
 
-Windows дозволяє слухати сирий мережевий трафік лише адміністраторам. Програма читає лише TCP-пакети порту гри, решту відкидає одразу.
+Windows only lets administrators listen to raw network traffic. The meter keeps the TCP packets of the game's port and drops everything else immediately.
 
-## Як перевірити, що exe зібраний із цього коду
+## Verifying a release
 
-Релізи збирає GitHub Actions, не чийсь ПК. Кожен реліз має SHA-256 і атестацію збірки:
+Releases are built by GitHub Actions, not on anyone's PC. Each release ships with a SHA-256 checksum and a build provenance attestation:
 
 ```bash
 gh attestation verify aion2-glass-meter.exe --repo jaaguaar/aion2-glass-meter
 ```
 
-## Ризики
+## Risks
 
-Офіційного дозволу NCSoft на сторонні метри немає. Ми мінімізуємо ризик (пасивне читання, нічого не публікуємо), але гарантувати відсутність санкцій не можемо. Використовуйте на свій розсуд.
+NCSoft has not officially allowed third-party meters. This project keeps the risk low (passive reading only, nothing is published), but we cannot guarantee you won't be sanctioned. Use at your own discretion.
 
-## Ліцензія
+## License
 
-[GPL-3.0](LICENSE). Копіювати й змінювати можна, але будь-яка поширена версія має бути з відкритим кодом під тією ж ліцензією.
+[GPL-3.0](LICENSE). You may copy and modify the code, but any version you distribute must also be open source under the same license.
 
-Проєкт не пов'язаний з NCSoft. Aion — торгова марка NCSoft Corporation.
+This project is not affiliated with NCSoft. Aion is a trademark of NCSoft Corporation.
