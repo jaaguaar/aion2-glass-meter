@@ -1,0 +1,23 @@
+# .NET build output
+bin/
+obj/
+artifacts/
+publish/
+*.user
+*.suo
+.vs/
+.idea/
+*.DotSettings.user
+TestResults/
+
+# Local runtime data — never commit captures or fight logs
+*.a2dump
+*.pcap
+*.pcapng
+fights/
+dumps/
+settings.local.json
+
+# OS
+Thumbs.db
+.DS_Store
